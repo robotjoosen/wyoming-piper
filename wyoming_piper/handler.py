@@ -230,8 +230,11 @@ class PiperEventHandler(AsyncEventHandler):
                     syn_config.noise_w_scale = self.cli_args.noise_w_scale
 
                 wav_writer: wave.Wave_write = wave.open(output_file, "wb")
+                wav_writer.setnchannels(1)
+                wav_writer.setsampwidth(2)
+                wav_writer.setframerate(_VOICE.config.sample_rate)
                 with wav_writer:
-                    _VOICE.synthesize_wav(text, wav_writer, syn_config)
+                    _VOICE.synthesize_wav(text, wav_writer, syn_config, set_wav_format=False)
 
             output_file.seek(0)
 
