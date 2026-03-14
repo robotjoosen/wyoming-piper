@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  wyoming-piper:
+    build: .
+    ports:
+      - "10200:10200"
+    volumes:
+      - ./data:/data
