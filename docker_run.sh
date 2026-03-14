@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-cd /usr/src
+cd /app
 
 args=(
     --uri 'tcp://0.0.0.0:10200'
-    --data-dir /data
+    --data-dir /app/data
+    --download-dir /app/data
 )
 
 if [ -n "$VOICE" ]; then
@@ -44,10 +45,6 @@ fi
 
 if [ -n "$SAMPLES_PER_CHUNK" ]; then
     args+=(--samples-per-chunk "$SAMPLES_PER_CHUNK")
-fi
-
-if [ -n "$DOWNLOAD_DIR" ]; then
-    args+=(--download-dir "$DOWNLOAD_DIR")
 fi
 
 exec .venv/bin/python3 -m wyoming_piper "${args[@]}" "$@"

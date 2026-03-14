@@ -4,7 +4,8 @@ services:
   wyoming-piper:
     build: .
     environment:
-      - VOICE=en_US-ryan-low
+      - VOICE=en_US-hfc_female-medium
+      - UPDATE_VOICES=1
       # Optional:
       # - USE_CUDA=1
       # - NO_STREAMING=1
@@ -13,9 +14,8 @@ services:
       # - LENGTH_SCALE=
       # - NOISE_W_SCALE=
       # - SAMPLES_PER_CHUNK=
-      # - DOWNLOAD_DIR=
     ports:
       - "10200:10200"
     volumes:
-      - ./data:/data
+      - ./data:/app/data
     restart: unless-stopped

@@ -3,7 +3,7 @@ ARG TARGETARCH
 ARG TARGETVARIANT
 
 # Install piper
-WORKDIR /usr/src
+WORKDIR /app
 
 COPY ./pyproject.toml ./
 RUN \
